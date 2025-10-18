@@ -11,7 +11,7 @@ if __name__ == '__main__':
     user_id = sys.argv[1]
     user_url = "https://jsonplaceholder.typicode.com/users/{}" \
         .format(user_id)
-    todos_url = "httpps://jsonplaceholder.typicode.com/users/{}/todos/" \
+    todos_url = "https://jsonplaceholder.typicode.com/users/{}/todos/" \
         .format(user_id)
 
     user_info = requests.request('GET', user_url).json()
