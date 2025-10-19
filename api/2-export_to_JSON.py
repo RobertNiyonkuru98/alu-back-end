@@ -1,11 +1,10 @@
 #!/usr/bin/python3
-"""Module"""
 
+'''JSON export'''
+
+import json
 import requests
 import sys
-
-
-"""Module"""
 
 if __name__ == '__main__':
     user_id = sys.argv[1]
@@ -23,7 +22,8 @@ if __name__ == '__main__':
     number_of_done_tasks = len(task_completed)
     total_number_of_tasks = len(todos_info)
 
-    print("Employee {} is done with tasks({}/{}):".
-          format(employee_name, number_of_done_tasks, total_number_of_tasks))
-
-    [print("\t " + task["title"]) for task in task_completed]
+    with open('{}.json'.format(user_id), 'w') as jsonfile:
+        json.dump({user_id: [{"task": task["title"],
+                              "completed": task["completed"],
+                              "username": user_info["username"]}
+                             for task in todos_info]}, jsonfile)
